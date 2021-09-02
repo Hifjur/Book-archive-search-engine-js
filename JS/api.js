@@ -32,7 +32,8 @@ const totalFindingResults = data => {
     }
     else {
         resutlCount.innerHTML = `
-        About ${counter} results found..
+        About ${counter} results found.. <br>
+        Showing the top ${data.docs.length} results!
     `;
     }
     document.getElementById('search-count').style.display = 'block';

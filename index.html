@@ -15,6 +15,8 @@
     <header>
         <h1 class="text-center text-light mt-5">Book Archive</h1>
     </header>
+    <P class="text-light text-center">SEARCH YOUR BOOK</P>
+    <!-- search box -->
     <div class="input-group mb-3 mt-5 mx-auto w-50">
         <input id="search-text" type="text" class="form-control" placeholder="Insert Book Name here..." aria-label="Book-Name" aria-describedby="button-addon2">
         <button onclick="searchInput()" class="btn btn-success" type="button" id="button-addon2">Search</button>
@@ -31,7 +33,8 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    <h6 id="search-count" class=" container text-center text-light  bg-warning w-50 text-dark"><span id="search-count-value"></span></h6>
+    <!-- result count  -->
+    <h6 id="search-count" class=" container text-center text-light  counter w-25 rounded text-light p-2"><span id="search-count-value"></span></h6>
     <!-- search results -->
     <section class="container">
         <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 ">
