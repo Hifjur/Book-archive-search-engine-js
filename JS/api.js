@@ -12,18 +12,37 @@ const bookArchiveConnetor = bookName => {
     fetch(bookUrl)
     .then(res => res.json())
     .then(data => diplayResult(data.docs));
-
+    
     //const picture.
     
 }
-
-
+const getPublisher = book => {
+    if (typeof(book.publisher) === 'object'){
+        return book.publisher[0];
+    }
+    else if (book.publisher === undefined){
+        return 'Not found!';
+    }
+    else{
+        return book.publisher;
+    };
+}    
+const getCover = book => {
+    const coverPhoto= `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+    if (book.cover_i === undefined){
+        return `images/no_preview.png`;
+    }
+    else{
+        return coverPhoto;
+    };
+}    
+//search result
 const diplayResult = books => {
+    console.log(books);
     const result = document.getElementById('search-result');
     books.forEach(book => {
-        const coverPhoto= `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
-        
-        console.log(coverPhoto);
+        const coverPhoto = getCover(book);
+        const publisher = getPublisher(book);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -32,7 +51,7 @@ const diplayResult = books => {
             <div class="card-body">
                 <h5 class="card-title">${book.title}</h5>
                 <p class="card-text">by ${book.author_name} <br>
-                Publisher: ${books.publisher}
+                Publisher: ${publisher}
                 .</p>
             </div>
         </div>
