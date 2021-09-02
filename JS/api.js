@@ -5,6 +5,7 @@ const searchInput = () =>{
     const text = document.getElementById('search-text');
     bookArchiveConnetor(text.value);
     text.value = '';
+    document.getElementById('search-count').style.display='none';
 }
 
 //procecssing the input to fetch result
@@ -13,11 +14,20 @@ const bookArchiveConnetor = bookName => {
     console.log(bookUrl);
     fetch(bookUrl)
     .then(res => res.json())
-    .then(data => diplayResult(data.docs));
-    
-    //const picture.
-    
+    .then(data => totalFindingResults(data));
+   
 }
+
+//get eh data and shows search reasult
+const totalFindingResults= data =>{
+    console.log(data);
+    const resutlCount= document.getElementById('search-count-value');
+    resutlCount.innerText = data.numFound;
+    document.getElementById('search-count').style.display='block';
+
+    diplayResult(data.docs);
+};
+
 //getting author and getting rid of undefined values
 const getAuthor = book => {
     if (book.author_name === undefined){
