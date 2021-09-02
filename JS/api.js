@@ -22,7 +22,17 @@ const bookArchiveConnetor = bookName => {
 const totalFindingResults= data =>{
     console.log(data);
     const resutlCount= document.getElementById('search-count-value');
-    resutlCount.innerText = data.numFound;
+    const counter = data.numFound;
+    if(counter === 0){
+        resutlCount.innerHTML=`
+        No result found
+    `;
+    }
+    else{
+    resutlCount.innerHTML=`
+        About ${counter} results found..
+    `;
+    }
     document.getElementById('search-count').style.display='block';
 
     diplayResult(data.docs);
