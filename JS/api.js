@@ -1,5 +1,7 @@
 // taking input from the input field
 const searchInput = () =>{
+    const previousResult= document.getElementById('search-result');
+    previousResult.textContent = '';
     const text = document.getElementById('search-text');
     bookArchiveConnetor(text.value);
     text.value = '';
@@ -16,6 +18,16 @@ const bookArchiveConnetor = bookName => {
     //const picture.
     
 }
+//getting author and getting rid of undefined values
+const getAuthor = book => {
+    if (book.author_name === undefined){
+        return 'Author Not Found!';
+    }
+    else{
+        return book.author_name;
+    };
+}
+//getting publisher and getting rid of undefined values
 const getPublisher = book => {
     if (typeof(book.publisher) === 'object'){
         return book.publisher[0];
@@ -26,7 +38,8 @@ const getPublisher = book => {
     else{
         return book.publisher;
     };
-}    
+}
+//getting cover photo    
 const getCover = book => {
     const coverPhoto= `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
     if (book.cover_i === undefined){
@@ -41,6 +54,7 @@ const diplayResult = books => {
     console.log(books);
     const result = document.getElementById('search-result');
     books.forEach(book => {
+        const author = getAuthor(book);
         const coverPhoto = getCover(book);
         const publisher = getPublisher(book);
         const div = document.createElement('div');
@@ -50,7 +64,7 @@ const diplayResult = books => {
             <img src="${coverPhoto}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${book.title}</h5>
-                <p class="card-text">by ${book.author_name} <br>
+                <p class="card-text">by ${author} <br>
                 Publisher: ${publisher}
                 .</p>
             </div>
