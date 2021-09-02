@@ -17,19 +17,19 @@
     </header>
     <div class="input-group mb-3 mt-5 mx-auto w-50">
         <input id="search-text" type="text" class="form-control" placeholder="Insert Book Name here..." aria-label="Book-Name" aria-describedby="button-addon2">
-        <button class="btn btn-success" type="button" id="button-addon2">Search</button>
+        <button onclick="searchInput()" class="btn btn-success" type="button" id="button-addon2">Search</button>
     </div>
     <!-- search results -->
     <section class="container">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 ">
             <div class="col">
-              <div class="card h-100">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="card h-100 bg-card">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
                 </div>
-              </div>
             </div>
 
           </div>
