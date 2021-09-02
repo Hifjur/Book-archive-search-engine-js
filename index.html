@@ -19,7 +19,19 @@
         <input id="search-text" type="text" class="form-control" placeholder="Insert Book Name here..." aria-label="Book-Name" aria-describedby="button-addon2">
         <button onclick="searchInput()" class="btn btn-success" type="button" id="button-addon2">Search</button>
     </div>
-    <h6 id="search-count" class="text-center text-light"><span id="search-count-value"></span></h6>
+    <!-- spinner -->
+    <div id="spinner" class=" mx-auto text-center">
+        <div class="spinner-grow text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <h6 id="search-count" class=" container text-center text-light  bg-warning w-50 text-dark"><span id="search-count-value"></span></h6>
     <!-- search results -->
     <section class="container">
         <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 ">
