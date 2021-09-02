@@ -59,6 +59,19 @@ const getPublisher = book => {
         return book.publisher;
     };
 }
+//getting publishing year and getting rid of undefined values
+const getPublishYear = book => {
+    if (typeof(book.publish_year) === 'object'){
+        const yearArray = book.publish_year;
+        return Math.min(...yearArray);
+    }
+    else if (book.publish_year === undefined){
+        return 'Not found!';
+    }
+    else{
+        return book.publish_year;
+    };
+}
 //getting cover photo    
 const getCover = book => {
     const coverPhoto= `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
@@ -77,6 +90,7 @@ const diplayResult = books => {
         const author = getAuthor(book);
         const coverPhoto = getCover(book);
         const publisher = getPublisher(book);
+        const publishYear = getPublishYear(book);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -85,7 +99,8 @@ const diplayResult = books => {
             <div class="card-body">
                 <h5 class="card-title">${book.title}</h5>
                 <p class="card-text">by ${author} <br>
-                Publisher: ${publisher}
+                Publisher: ${publisher} <br>
+                Publish Year: ${publishYear}
                 .</p>
             </div>
         </div>
